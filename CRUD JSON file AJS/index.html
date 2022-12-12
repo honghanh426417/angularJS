@@ -15,7 +15,12 @@
 </head>
 <body>
     <br/>
+
     <div ng-app="App" ng-controller="ContactController">
+        <div class="input">
+            <input type="text" placeholder="search" ng-model="ContactController.searchInput">
+        </div>
+        <!-- <label for="">Search: <input ng-model="contact.name" /></label> -->
         <form action="" class="well">
             <label for="">Name</label>
             <input type="text" name="name" ng-model="newcontact.name"/>
@@ -40,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="contact in contacts">
+                <tr ng-repeat="contact in contacts | filter: ContactController.searchInput | orderBy"  >
                     <td>{{ contact.name}}</td>
                     <td>{{ contact.email}}</td>
                     <td>{{ contact.phone}}</td>
