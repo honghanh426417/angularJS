@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS MVC Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+<body>
+    <h2>AngularJS MVC Example</h2>
+    <!-- Khai bao angular: ng-app -->
+    <!-- Khai bao controller(1,2,3): ng-controller -->
+    
+    <div ng-app="testApp" ng-controller="appController">
+        Enter first name:
+        <!-- Khai bao model(2,4): ng-model -->
+        <input type="text" ng-model="student.firstName">
+        <br><br>
+        Enter last name:
+        <input type="text" ng-model="student.lastName">
+        <br><br>
+        <!-- VIEW(3,4) binding data from Model -->
+        Entered value: {{student.fullName()}}
+    </div>
+    <script>
+        var mainApp = angular.module("testApp", []);
+        //step 1,2
+        mainApp.controller('appController', function($scope){
+            $scope.student = {
+                firstName:"Nguyen",
+                lastName:"Trong",
+                fullName: function(){
+                    var studentObject = $scope.student;
+                    return studentObject.firstName+ " " + studentObject.lastName;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <p>Danh sach nhung nguoi minh biet</p>
+    <div ng-app="myApp" ng-controller="classesCtrl">
+        <table border="1" width="100%">
+            <tr>
+                <th ng-click="oderByMe('name')">name</th>        
+                <th ng-click="oderByMe('email')">email</th>        
+                <th ng-click="oderByMe('address')">address</th>        
+    
+            </tr>
+            <tr ng-repeat="x in classes | orderBy:myOrderBy">
+                <td>{{x.name}}</td>
+                <td>{{x.email}}</td>
+                <td>{{x.address}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        angular.module('myApp', []).controller('classesCtrl', function($scope){
+            $scope.classes = [
+                {name:'Tho', email:'@tho', address:'Hn'},
+                {name:'Thao', email:'@thao', address:'Hn'},
+                {name:'Dat', email:'@dat', address:'Hn'},
+                {name:'Toan', email:'@toan', address:'Nam Dinh'},
+                {name:'Trung', email:'@trung', address:'Quang '},
+                {name:'Hanh', email:'@hanh', address:'Thai Binh'},
+                {name:'Tuan', email:'@tuan', address:'Thai Thuy'},
+
+            ];
+            $scope.orderByMe = function(x){
+                $scope.myOrderBy = x;
+            }
+        });
+    </script>
+<body>
+    
+</body>
+</html>

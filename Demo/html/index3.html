@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="dataBiding">
+            <h3 ng-class="Data">{{Data}}</h3>
+            <!-- Add Event -->
+            <button ng-click='change()'>Change</button>
+
+        </div>
+    </div>
+    <script >
+        var app = angular.module('myApp', []);
+        app.controller('dataBiding', ['$scope', function($scope){
+            $scope.Data = 'Ngoc Hai';
+            $scope.change = function(){
+                $scope.Data = $scope.Data === 'Hai' ? 'Van' : 'Ngoc';
+            };
+        }]);
+    </script>
+</body>
+</html>
